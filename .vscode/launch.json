@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "EKKO",
+            "type": "cppdbg",
+            "targetArchitecture":"ARM",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.elf",
+            "cwd": "${workspaceFolder}",
+            "args": [],
+            "stopAtEntry": true,
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerServerAddress": "localhost:3333",
+            "customLaunchSetupCommands": [
+                { "text": "file ${workspaceFolder}/main.elf", "description": "Loading ELF File", "ignoreFailures": false },
+                { "text": "target remote:3333", "description": "Connecting to the target", "ignoreFailures": false },
+                { "text": "load", "description": "Load ELF file to the target", "ignoreFailures": false },
+                { "text": "b main", "description": "Insert breakpoint in main", "ignoreFailures": false },
+                { "text": "jump reset_handler", "description": "Jump to the beggining of the program", "ignoreFailures": true },
+            ],
+            "launchCompleteCommand": "None",
+            "logging": { "engineLogging": true },
+            "linux": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "riscv32-unknown-elf-gdb"
+            }
+        }
+    ]
+}
